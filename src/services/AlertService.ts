@@ -24,9 +24,12 @@ export async function sendLiveAlert(
     const row = createWatchButtonRow(status.url, status.platform);
 
     await (channel as TextChannel).send({
-      embeds: [embed],
-      components: [row],
-    });
+  content: `@everyone 🔥YA ESTAMOS EN LIVE, JALATE A VER🔥`,
+  embeds: [embed],
+  components: [row],
+  allowedMentions: { parse: ['everyone'] }
+});
+    
 
     logger.info(
       `Sent live alert for ${status.username} (${status.platform}) to channel ${channelId}`,
